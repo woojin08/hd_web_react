@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import TopBanner from "./TopBanner";
+
 
 
 const NAVLINK = [
@@ -11,10 +12,20 @@ const NAVLINK = [
 ]
 
 const Header = () => {
-    const [TG, setTG] = useState(false);
-    const [TS, setTS] = useState(false);
+    const [TG, setTG] = useState(false, false);
+    const HL = useRef();
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            let sct = window.scrollY;
+            sct > 0
+                ? HL.current.classList.add('on')
+                : HL.current.classList.remove('on')
+
+        })
+    }, [])
+    // const [TS, setTS] = useState(false);
     return (
-        <header className="Header">
+        <header className="Header" ref={HL}>
             <TopBanner />
             <div className="hd_wrap">
                 <h1>
@@ -48,7 +59,7 @@ const Header = () => {
                             <li><a href="#!">CHN</a></li>
                         </ul>
                     </div>
-                    <div className={`top_search ${TS ? 'on' : ''}`}>
+                    {/* <div className={`top_search ${TS ? 'on' : ''}`}>
                         <strong onClick={() => setTS(!TS)}><i className="xi-search"></i></strong>
                         <div className="search_box">
 
@@ -59,7 +70,7 @@ const Header = () => {
                                 </button>
                             </form>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </header >
