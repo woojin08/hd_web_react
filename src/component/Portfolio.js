@@ -4,17 +4,18 @@ import "slick-carousel/slick/slick.css";
 
 const PTF = [
     { id: 1, title: "서울시청" },
-    { id: 2, title: "서울드래곤시티(용산서울)" },
+    { id: 2, title: "서울드래곤시티(용산호텔)" },
     { id: 3, title: "부산 파크하얏트" },
     { id: 4, title: "송도 G타워" },
     { id: 5, title: "롯데월드몰" },
-    { id: 6, title: "파라다이스시티호텔" },
-    { id: 7, title: "명동 대신증권 신사옥" },
-    { id: 8, title: "동대구복합환승센터" },
-    { id: 9, title: "서울시청" },
+    { id: 6, title: "서울시청" },
+    { id: 7, title: "서울드래곤시티(용산호텔)" },
+    { id: 8, title: "송도 G타워" },
+    { id: 9, title: "롯데월드몰" },
 ]
 
-const NPTF = PTF
+// 배열 메소드를 공부하기... 검색하기... 스프레드 연산자...
+const NPTF = [...PTF, PTF[0]].splice(1, PTF.length);
 
 const Portfolio = () => {
     const LS = useRef();
@@ -42,11 +43,11 @@ const Portfolio = () => {
                             {
                                 PTF.map(building => {
                                     return (
-                                        <figure>
+                                        <figure key={building.id}>
                                             <div className="box">
                                                 <img src={process.env.PUBLIC_URL + "/assets/images/main_m0" + building.id + ".jpg"} alt="" />
                                             </div>
-                                            <div className="des">{building.title}</div>
+                                            <div className='des'>{building.title}</div>
                                         </figure>
                                     )
                                 })
@@ -69,13 +70,13 @@ const Portfolio = () => {
                             arrows={false}
                         >
                             {
-                                PTF.map(building => {
+                                NPTF.map(building => {
                                     return (
-                                        <figure>
+                                        <figure key={building.id}>
                                             <div className="box">
                                                 <img src={process.env.PUBLIC_URL + "/assets/images/main_m0" + building.id + ".jpg"} alt="" />
                                             </div>
-                                            <div className="des">{building.title}</div>
+                                            <div className='des'>{building.title}</div>
                                         </figure>
                                     )
                                 })
@@ -85,8 +86,8 @@ const Portfolio = () => {
                 </div>
 
 
-            </div >
-        </section >
+            </div>
+        </section>
     )
 }
 export default Portfolio;

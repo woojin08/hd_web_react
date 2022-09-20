@@ -1,4 +1,4 @@
-import FaminlyLink from "./FaminlyLink"
+import FamilyLink from "./FaminlyLink"
 import ServiceLink from "./ServiceLink"
 
 const Footer = () => {
@@ -18,9 +18,12 @@ const Footer = () => {
             </div>
             <div className="ft_bottom">
                 <div className="inner">
-                    <address className="left"></address>
+                    <div className="left">
+                        <address>충청북도 충주시 충주산단1로 128 현대엘리베이터</address>
+                        <span>COPYRIGHT &copy; 2018 HYUNDAIELEVATOR CO.,LTD. ALL RIGHTS RESERVED</span>
+                    </div>
                     <div className="right">
-                        <FaminlyLink />
+                        <FamilyLink />
                     </div>
                 </div>
             </div>
@@ -28,4 +31,4 @@ const Footer = () => {
     )
 }
 
-export default Footer;
+export default Footer
